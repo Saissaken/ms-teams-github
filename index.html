@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button type="button" onclick="onClick()">Start</button>
+    
+    <script src="https://statics.teams.microsoft.com/sdk/v0.3/js/MicrosoftTeams.min.js"></script>
+    <script type="text/javascript">
+      microsoftTeams.initialize();
+      microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) {
+        microsoftTeams.settings.setSettings({
+          contentUrl: "https://www.bing.com/maps/embed",
+          suggestedTabName: "Bing Map",
+          websiteUrl: "https://www.bing.com/maps",
+          removeUrl: window.location.origin + "/tabremove.html"
+        });
+        saveEvent.notifySuccess();
+      });
+
+      function onClick() {
+        microsoftTeams.settings.setValidityState(true);
+      }
+    </script>
+  </body>
+</html>
